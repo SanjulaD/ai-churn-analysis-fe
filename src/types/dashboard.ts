@@ -1,4 +1,4 @@
-import { RiskLevel, PaymentMethod, SegmentType } from "./enums";
+import { RiskLevel, PaymentMethod, SegmentType } from './enums';
 import {
   RFMOverview,
   RFMSegmentDetail,
@@ -6,7 +6,7 @@ import {
   RFMPaymentType,
   RFMProduct,
   RFMReviewScore,
-} from "@/schemas/apiSchemas";
+} from '@/schemas/apiSchemas';
 
 export interface CustomerProfile {
   Tenure: number;

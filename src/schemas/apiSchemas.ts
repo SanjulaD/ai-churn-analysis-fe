@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 // Customer Profile Schema
 export const CustomerProfileSchema = z.object({
@@ -74,8 +74,8 @@ export const RFMOverviewSchema = z.object({
 });
 
 export const RFMSegmentDetailSchema = z.object({
-  "RFM Segment": z.string(),
-  "RFM Segment Score": z.number(),
+  'RFM Segment': z.string(),
+  'RFM Segment Score': z.number(),
   n_customer: z.number(),
   mean_recency: z.number(),
   min_recency: z.number(),
@@ -92,36 +92,32 @@ export const RFMSegmentDetailSchema = z.object({
 });
 
 export const RFMSegmentDistributionSchema = z.object({
-  "RFM Segment": z.string(),
+  'RFM Segment': z.string(),
   count: z.number(),
 });
 
 export const RFMPaymentTypeSchema = z.object({
-  "RFM Segment": z.string(),
+  'RFM Segment': z.string(),
   most_payment_type: z.string(),
 });
 
 export const RFMProductSchema = z.object({
-  "RFM Segment": z.string(),
+  'RFM Segment': z.string(),
   most_product_buy: z.string(),
 });
 
 export const RFMReviewScoreSchema = z.object({
-  "RFM Segment": z.string(),
+  'RFM Segment': z.string(),
   avg_review_score: z.number(),
 });
 
 export type ChurnDistributionResponse = z.infer<typeof ChurnDistributionSchema>;
 export type TopRiskCustomersResponse = z.infer<typeof TopRiskCustomersSchema>;
 export type ModelMetricsResponse = z.infer<typeof ModelMetricsSchema>;
-export type FeatureImportanceApiResponse = z.infer<
-  typeof FeatureImportanceApiSchema
->;
+export type FeatureImportanceApiResponse = z.infer<typeof FeatureImportanceApiSchema>;
 export type RFMOverview = z.infer<typeof RFMOverviewSchema>;
 export type RFMSegmentDetail = z.infer<typeof RFMSegmentDetailSchema>;
-export type RFMSegmentDistribution = z.infer<
-  typeof RFMSegmentDistributionSchema
->;
+export type RFMSegmentDistribution = z.infer<typeof RFMSegmentDistributionSchema>;
 export type RFMPaymentType = z.infer<typeof RFMPaymentTypeSchema>;
 export type RFMProduct = z.infer<typeof RFMProductSchema>;
 export type RFMReviewScore = z.infer<typeof RFMReviewScoreSchema>;

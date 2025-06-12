@@ -1,6 +1,6 @@
-import { create } from "zustand";
-import { type ChurnData } from "@/types/dashboard";
-import { ApiService } from "@/services/api";
+import { create } from 'zustand';
+import { type ChurnData } from '@/types/dashboard';
+import { ApiService } from '@/services/api';
 
 interface ChurnStore {
   data: ChurnData | null;
@@ -26,10 +26,9 @@ export const useChurnStore = create<ChurnStore>((set, get) => ({
       const data = await ApiService.getChurnOverview(limit, threshold);
       set({ data, loading: false });
     } catch (error) {
-      console.error("Error fetching churn data:", error);
+      console.error('Error fetching churn data:', error);
       set({
-        error:
-          error instanceof Error ? error.message : "Failed to fetch churn data",
+        error: error instanceof Error ? error.message : 'Failed to fetch churn data',
         loading: false,
       });
     }

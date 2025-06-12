@@ -1,7 +1,7 @@
-import { create } from "zustand";
-import { type SegmentDeepDiveData } from "@/types/dashboard";
-import { PaymentMethod, SegmentType } from "@/types/enums";
-import { ApiService } from "@/services/api";
+import { create } from 'zustand';
+import { type SegmentDeepDiveData } from '@/types/dashboard';
+import { PaymentMethod, SegmentType } from '@/types/enums';
+import { ApiService } from '@/services/api';
 
 interface SegmentDeepDiveStore {
   data: SegmentDeepDiveData | null;
@@ -10,7 +10,7 @@ interface SegmentDeepDiveStore {
   fetchSegmentDeepDive: () => Promise<void>;
 }
 
-export const useSegmentDeepDiveStore = create<SegmentDeepDiveStore>((set) => ({
+export const useSegmentDeepDiveStore = create<SegmentDeepDiveStore>(set => ({
   data: null,
   loading: false,
   error: null,
@@ -20,7 +20,7 @@ export const useSegmentDeepDiveStore = create<SegmentDeepDiveStore>((set) => ({
       const data = await ApiService.getSegmentDeepDive();
       set({ data, loading: false });
     } catch (error) {
-      console.error("Error fetching segment deep dive data:", error);
+      console.error('Error fetching segment deep dive data:', error);
       // Fallback to mock data
       const mockData: SegmentDeepDiveData = {
         segmentDistribution: [
@@ -43,44 +43,44 @@ export const useSegmentDeepDiveStore = create<SegmentDeepDiveStore>((set) => ({
           },
         ],
         paymentTypes: [
-          { method: PaymentMethod.CREDIT_CARD, value: 45, color: "#3b82f6" },
-          { method: PaymentMethod.BANK_TRANSFER, value: 30, color: "#10b981" },
+          { method: PaymentMethod.CREDIT_CARD, value: 45, color: '#3b82f6' },
+          { method: PaymentMethod.BANK_TRANSFER, value: 30, color: '#10b981' },
           {
             method: PaymentMethod.ELECTRONIC_CHECK,
             value: 15,
-            color: "#f59e0b",
+            color: '#f59e0b',
           },
-          { method: PaymentMethod.MAILED_CHECK, value: 10, color: "#ef4444" },
+          { method: PaymentMethod.MAILED_CHECK, value: 10, color: '#ef4444' },
         ],
         topProducts: [
           {
-            product: "Premium Plan",
+            product: 'Premium Plan',
             segment: SegmentType.CHAMPIONS,
             sales: 245,
           },
           {
-            product: "Standard Plan",
+            product: 'Standard Plan',
             segment: SegmentType.LOYAL_CUSTOMERS,
             sales: 189,
           },
           {
-            product: "Basic Plan",
+            product: 'Basic Plan',
             segment: SegmentType.POTENTIAL_LOYALISTS,
             sales: 156,
           },
           {
-            product: "Fiber Internet",
+            product: 'Fiber Internet',
             segment: SegmentType.CHAMPIONS,
             sales: 134,
           },
-          { product: "Phone Service", segment: SegmentType.AT_RISK, sales: 98 },
+          { product: 'Phone Service', segment: SegmentType.AT_RISK, sales: 98 },
         ],
         reviewScores: [
-          { segment: "Champions", score: 4.8 },
-          { segment: "Loyal", score: 4.5 },
-          { segment: "Potential", score: 4.2 },
-          { segment: "At Risk", score: 3.1 },
-          { segment: "Cannot Lose", score: 2.8 },
+          { segment: 'Champions', score: 4.8 },
+          { segment: 'Loyal', score: 4.5 },
+          { segment: 'Potential', score: 4.2 },
+          { segment: 'At Risk', score: 3.1 },
+          { segment: 'Cannot Lose', score: 2.8 },
         ],
       };
       set({ data: mockData, loading: false });
