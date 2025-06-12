@@ -18,6 +18,13 @@
         "test:coverage": "jest --coverage",
         "test:ui": "jest --watchAll=false --passWithNoTests"
     },
+    "lint-staged": {
+        "*.{js,ts,tsx,json,css,md}": [
+            "npm run format",
+            "npm run lint:fix",
+            "git add"
+        ]
+    },
     "dependencies": {
         "@clerk/clerk-react": "^5.31.9",
         "@hookform/resolvers": "^5.1.1",
@@ -92,8 +99,5 @@
         "typescript": "~5.8.3",
         "typescript-eslint": "^8.30.1",
         "vite": "^6.3.5"
-    },
-    "lint-staged": {
-        "*.js": "eslint --cache --fix"
     }
 }
