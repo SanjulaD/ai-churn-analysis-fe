@@ -19,10 +19,11 @@
         "test:ui": "jest --watchAll=false --passWithNoTests"
     },
     "lint-staged": {
-        "*.{js,ts,tsx,json,css,md}": [
-            "npm run format",
-            "npm run lint:fix",
-            "git add"
+        "*.{ts,tsx}": [
+            "npm run lint"
+        ],
+        "*.{js,jsx,json,css,md}": [
+            "npm run format:check"
         ]
     },
     "dependencies": {
