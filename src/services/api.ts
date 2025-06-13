@@ -117,7 +117,7 @@ export class ApiService {
   static async updateModel(): Promise<void> {
     try {
       const response = await fetch(API_ENDPOINTS.MODEL_UPDATE, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
