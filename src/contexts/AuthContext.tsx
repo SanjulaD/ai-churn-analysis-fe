@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface User {
@@ -26,6 +26,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
+  const logout = useCallback(() => {
+    setUser(null);
+    setIsLoggedIn(false);
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('user');
+    navigate('/login');
+  }, [navigate]);
+
   useEffect(() => {
     // Check if user is logged in on mount
     const storedLoggedIn = localStorage.getItem('isLoggedIn');
@@ -40,15 +48,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         logout();
       }
     }
-  }, []);
+  }, [logout]);
 
   const login = async (username: string, password: string) => {
-    // Simple authentication - in a real app, connect to an API
     if (!username || !password) {
       throw new Error('Username and password are required');
     }
 
-    // Simulate API call
+    // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     const newUser = { username };
@@ -57,14 +64,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('user', JSON.stringify(newUser));
-  };
-
-  const logout = () => {
-    setUser(null);
-    setIsLoggedIn(false);
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('user');
-    navigate('/login');
   };
 
   return (

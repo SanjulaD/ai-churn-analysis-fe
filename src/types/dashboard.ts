@@ -1,5 +1,5 @@
-import { RiskLevel, PaymentMethod, SegmentType } from './enums';
-import {
+import { PaymentMethod, SegmentType } from './enums';
+import type {
   RFMOverview,
   RFMSegmentDetail,
   RFMSegmentDistribution,
