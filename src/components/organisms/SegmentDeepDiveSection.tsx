@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
 import {
-  BarChart,
   Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
 } from 'recharts';
+
+import { Loader } from '@/components/atoms/Loader';
 import { ChartContainer } from '@/components/molecules/ChartContainer';
 import { ProductSegmentItem } from '@/components/molecules/ProductSegmentItem';
 import { useSegmentDeepDiveStore } from '@/stores/segmentDeepDiveStore';
-import { Loader } from '@/components/atoms/Loader';
 
 export function SegmentDeepDiveSection() {
   const { data, loading, fetchSegmentDeepDive } = useSegmentDeepDiveStore();

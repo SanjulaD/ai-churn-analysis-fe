@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { Users, DollarSign, Target, TrendingUp, Eye } from 'lucide-react';
+import { DollarSign, Eye, Target, TrendingUp, Users } from 'lucide-react';
 import {
-  BarChart,
   Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
 } from 'recharts';
+
+import { Loader } from '@/components/atoms/Loader';
 import { MetricCard } from '@/components/atoms/MetricCard';
 import { ChartContainer } from '@/components/molecules/ChartContainer';
 import { SegmentDetailModal } from '@/components/molecules/SegmentDetailModal';
 import { Button } from '@/components/ui/button';
-import { useRFMSegmentationStore } from '@/stores/rfmSegmentationStore';
-import { Loader } from '@/components/atoms/Loader';
-import { ApiService } from '@/services/api';
 import type { RFMSegmentDetail } from '@/schemas/apiSchemas';
+import { ApiService } from '@/services/api';
+import { useRFMSegmentationStore } from '@/stores/rfmSegmentationStore';
 
 const SEGMENT_COLORS = [
   '#3b82f6',

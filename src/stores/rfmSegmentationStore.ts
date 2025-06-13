@@ -1,6 +1,7 @@
 import { create } from 'zustand';
-import { type RFMSegmentationData } from '@/types/dashboard';
+
 import { ApiService } from '@/services/api';
+import { type RFMSegmentationData } from '@/types/dashboard';
 
 interface RFMSegmentationStore {
   data: RFMSegmentationData | null;

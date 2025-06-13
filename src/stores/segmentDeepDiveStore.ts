@@ -1,7 +1,8 @@
 import { create } from 'zustand';
+
+import { ApiService } from '@/services/api';
 import { type SegmentDeepDiveData } from '@/types/dashboard';
 import { PaymentMethod, SegmentType } from '@/types/enums';
-import { ApiService } from '@/services/api';
 
 interface SegmentDeepDiveStore {
   data: SegmentDeepDiveData | null;

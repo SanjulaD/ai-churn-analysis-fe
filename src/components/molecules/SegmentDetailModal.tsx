@@ -1,7 +1,8 @@
 import React from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Clock, DollarSign, Star, Users } from 'lucide-react';
+
 import { Badge } from '@/components/ui/badge';
-import { Users, DollarSign, Clock, Star } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import type { RFMSegmentDetail } from '@/schemas/apiSchemas';
 
 interface SegmentDetailModalProps {

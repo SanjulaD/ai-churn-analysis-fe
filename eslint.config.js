@@ -4,6 +4,8 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import unusedImports from 'eslint-plugin-unused-imports';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import { builtinModules } from 'module';
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -18,6 +20,7 @@ export default tseslint.config(
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       'unused-imports': unusedImports,
+      'simple-import-sort': simpleImportSort,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -28,6 +31,20 @@ export default tseslint.config(
       'unused-imports/no-unused-vars': [
         'warn',
         { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+      ],
+      'simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            ['^\\u0000'], // Side effect imports
+            [`^(${builtinModules.join('|')})(/|$)`], // Node.js builtins
+            ['^react', '^@?\\w'], // Packages
+            ['^(@|components|utils|hooks)(/|$)'], // Internal modules (adjust prefixes)
+            ['^\\.\\.(?!/?$)', '^\\.\\./?$'], // Parent imports
+            ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'], // Same folder imports
+            ['^.+\\.s?css$'], // Style imports
+          ],
+        },
       ],
     },
   }

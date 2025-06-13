@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Settings, Users } from 'lucide-react';
+import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
+
+import { ChurnRateDisplay } from '@/components/atoms/ChurnRateDisplay';
+import { Loader } from '@/components/atoms/Loader';
+import { CustomerRiskItem } from '@/components/molecules/CustomerRiskItem';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Users, Settings } from 'lucide-react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-import { ChurnRateDisplay } from '@/components/atoms/ChurnRateDisplay';
-import { CustomerRiskItem } from '@/components/molecules/CustomerRiskItem';
-import { useChurnStore } from '@/stores/churnStore';
-import { Loader } from '@/components/atoms/Loader';
 import {
   Pagination,
   PaginationContent,
@@ -17,6 +17,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
+import { useChurnStore } from '@/stores/churnStore';
 
 export function ChurnOverviewSection() {
   const { data, loading, error, limit, threshold, fetchChurnData, setLimit, setThreshold } =

@@ -1,28 +1,28 @@
+import { z } from 'zod';
+
 import { API_ENDPOINTS } from '@/contants/api';
 import {
   ChurnDistributionSchema,
-  TopRiskCustomersSchema,
-  ModelMetricsSchema,
   FeatureImportanceApiSchema,
+  ModelMetricsSchema,
   RFMOverviewSchema,
-  RFMSegmentDetailSchema,
-  RFMSegmentDistributionSchema,
   RFMPaymentTypeSchema,
   RFMProductSchema,
   RFMReviewScoreSchema,
   type RFMSegmentDetail,
+  RFMSegmentDetailSchema,
+  RFMSegmentDistributionSchema,
+  TopRiskCustomersSchema,
 } from '@/schemas/apiSchemas';
 import type {
   ChurnData,
-  ModelPerformanceData,
+  ChurnDistributionResponse,
   FeatureImportanceData,
+  ModelPerformanceData,
   RFMSegmentationData,
   SegmentDeepDiveData,
-  ChurnDistributionResponse,
   TopRiskCustomersResponse,
 } from '@/types/dashboard';
-
-import { z } from 'zod';
 
 export class ApiService {
   static async getChurnOverview(limit: number = 10, threshold: number = 0.5): Promise<ChurnData> {

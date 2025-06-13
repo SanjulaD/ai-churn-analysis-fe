@@ -1,5 +1,6 @@
 import React from 'react';
-import { Moon, Sun, LogOut } from 'lucide-react';
+import { LogOut, Moon, Sun } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { useAuth } from '@/contexts/AuthContext';

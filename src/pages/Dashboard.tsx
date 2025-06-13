@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
-import { SidebarProvider } from '@/components/ui/sidebar';
+import { useEffect, useState } from 'react';
+
+import { ChurnPredictionOverview } from '@/components/dashboard/ChurnPredictionOverview';
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
-import { ChurnPredictionOverview } from '@/components/dashboard/ChurnPredictionOverview';
-import { ModelPerformanceMetrics } from '@/components/dashboard/ModelPerformanceMetrics';
 import { FeatureImportance } from '@/components/dashboard/FeatureImportance';
+import { ModelPerformanceMetrics } from '@/components/dashboard/ModelPerformanceMetrics';
 import { RFMSegmentation } from '@/components/dashboard/RFMSegmentation';
 import { SegmentDeepDive } from '@/components/dashboard/SegmentDeepDive';
+import { SidebarProvider } from '@/components/ui/sidebar';
 
 const Dashboard = () => {
   const [activeSection, setActiveSection] = useState('overview');

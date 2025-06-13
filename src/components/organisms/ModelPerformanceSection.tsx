@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Target, Search, Activity, BarChart3 } from 'lucide-react';
-import { MetricCard } from '@/components/atoms/MetricCard';
-import { useModelPerformanceStore } from '@/stores/modelPerformanceStore';
+import { Activity, BarChart3, Search, Target } from 'lucide-react';
+
 import { Loader } from '@/components/atoms/Loader';
+import { MetricCard } from '@/components/atoms/MetricCard';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,8 +13,11 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import { toast } from '@/hooks/use-toast';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { toast } from '@/hooks/use-toast';
+import { useModelPerformanceStore } from '@/stores/modelPerformanceStore';
 
 const iconMap = {
   Target,

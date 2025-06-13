@@ -1,6 +1,7 @@
 import { create } from 'zustand';
-import { type ModelPerformanceData } from '@/types/dashboard';
+
 import { ApiService } from '@/services/api';
+import { type ModelPerformanceData } from '@/types/dashboard';
 
 interface ModelPerformanceStore {
   data: ModelPerformanceData | null;

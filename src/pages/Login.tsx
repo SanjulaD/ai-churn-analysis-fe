@@ -1,4 +1,9 @@
 import React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { Loader } from '@/components/atoms/Loader';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -8,11 +13,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Loader } from '@/components/atoms/Loader';
 
 export default function Login() {
   const [username, setUsername] = useState('');

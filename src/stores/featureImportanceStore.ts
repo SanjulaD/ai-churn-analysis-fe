@@ -1,6 +1,7 @@
 import { create } from 'zustand';
-import { type FeatureImportanceData } from '@/types/dashboard';
+
 import { ApiService } from '@/services/api';
+import { type FeatureImportanceData } from '@/types/dashboard';
 
 interface FeatureImportanceStore {
   data: FeatureImportanceData | null;

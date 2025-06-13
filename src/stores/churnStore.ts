@@ -1,6 +1,7 @@
 import { create } from 'zustand';
-import { type ChurnData } from '@/types/dashboard';
+
 import { ApiService } from '@/services/api';
+import { type ChurnData } from '@/types/dashboard';
 
 interface ChurnStore {
   data: ChurnData | null;

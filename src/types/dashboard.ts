@@ -1,12 +1,13 @@
-import { PaymentMethod, SegmentType } from './enums';
 import type {
   RFMOverview,
-  RFMSegmentDetail,
-  RFMSegmentDistribution,
   RFMPaymentType,
   RFMProduct,
   RFMReviewScore,
+  RFMSegmentDetail,
+  RFMSegmentDistribution,
 } from '@/schemas/apiSchemas';
+
+import { PaymentMethod, SegmentType } from './enums';
 
 export interface CustomerProfile {
   Tenure: number;

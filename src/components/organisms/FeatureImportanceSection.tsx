@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
-import { Download, BarChart } from 'lucide-react';
+import { BarChart, Download } from 'lucide-react';
 import {
-  BarChart as RechartsBarChart,
   Bar,
+  BarChart as RechartsBarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
 } from 'recharts';
+
+import { Loader } from '@/components/atoms/Loader';
 import { ChartContainer } from '@/components/molecules/ChartContainer';
 import { useFeatureImportanceStore } from '@/stores/featureImportanceStore';
-import { Loader } from '@/components/atoms/Loader';
 
 export function FeatureImportanceSection() {
   const { data, loading, downloadingCsv, fetchFeatureImportance, downloadCsv } =

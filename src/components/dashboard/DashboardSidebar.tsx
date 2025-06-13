@@ -1,4 +1,6 @@
 import React from 'react';
+import { BarChart3, Brain, Layers, Target, TrendingUp, Users } from 'lucide-react';
+
 import {
   Sidebar,
   SidebarContent,
@@ -9,7 +11,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { Brain, BarChart3, Target, Users, Layers, TrendingUp } from 'lucide-react';
 
 const menuItems = [
   {
