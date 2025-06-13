@@ -25,9 +25,8 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-      '@typescript-eslint/no-unused-vars': 'off',
-      'unused-imports/no-unused-imports': 'error',
-      'react-refresh/only-export-components': 'off',
+      '@typescript-eslint/no-unused-vars': 'off', // disable ts unused-vars to avoid conflict
+      'unused-imports/no-unused-imports': 'error', // removes unused imports
       'unused-imports/no-unused-vars': [
         'warn',
         { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
@@ -46,6 +45,8 @@ export default tseslint.config(
           ],
         },
       ],
+      'simple-import-sort/exports': 'error',
+      'react-refresh/only-export-components': 'off',
     },
   }
 );
