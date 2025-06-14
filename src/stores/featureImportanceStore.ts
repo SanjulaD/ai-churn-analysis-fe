@@ -2,6 +2,7 @@ import { create } from 'zustand';
 
 import { ApiService } from '@/services/api';
 import { type FeatureImportanceData } from '@/types/dashboard';
+import Logger from '@/utils/logger';
 
 interface FeatureImportanceStore {
   data: FeatureImportanceData | null;
@@ -23,7 +24,10 @@ export const useFeatureImportanceStore = create<FeatureImportanceStore>(set => (
       const data = await ApiService.getFeatureImportance();
       set({ data, loading: false });
     } catch (error) {
-      console.error('Error fetching feature importance:', error);
+      Logger.error(
+        'Error fetching feature importance: ' +
+          (error instanceof Error ? error.message : String(error))
+      );
       // Fallback to mock data
       const mockData: FeatureImportanceData = {
         features: [
@@ -50,9 +54,11 @@ export const useFeatureImportanceStore = create<FeatureImportanceStore>(set => (
       a.click();
       window.URL.revokeObjectURL(url);
     } catch (error) {
-      console.error('Error downloading CSV:', error);
+      Logger.error(
+        'Error downloading CSV: ' + (error instanceof Error ? error.message : String(error))
+      );
       // Mock download for demo
-      console.log('Downloading CSV...');
+      Logger.info('Downloading CSV...');
     } finally {
       set({ downloadingCsv: false });
     }

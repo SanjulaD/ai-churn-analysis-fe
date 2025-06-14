@@ -2,6 +2,7 @@ import { create } from 'zustand';
 
 import { ApiService } from '@/services/api';
 import { type ModelPerformanceData } from '@/types/dashboard';
+import Logger from '@/utils/logger';
 
 interface ModelPerformanceStore {
   data: ModelPerformanceData | null;
@@ -25,7 +26,10 @@ export const useModelPerformanceStore = create<ModelPerformanceStore>((set, get)
       const data = await ApiService.getModelPerformance();
       set({ data, loading: false });
     } catch (error) {
-      console.error('Error fetching model performance:', error);
+      Logger.error(
+        'Error fetching model performance: ' +
+          (error instanceof Error ? error.message : String(error))
+      );
       set({
         error: error instanceof Error ? error.message : 'Failed to fetch model performance',
         loading: false,
@@ -40,7 +44,9 @@ export const useModelPerformanceStore = create<ModelPerformanceStore>((set, get)
       // Refresh the data after successful update
       await get().fetchModelPerformance();
     } catch (error) {
-      console.error('Error updating model:', error);
+      Logger.error(
+        'Error updating model: ' + (error instanceof Error ? error.message : String(error))
+      );
       set({ updateSuccess: false });
     } finally {
       set({ updating: false });

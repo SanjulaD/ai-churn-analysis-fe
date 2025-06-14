@@ -1,41 +1,48 @@
-import winston from 'winston';
+interface Logger {
+  error: (message: string) => void;
+  warn: (message: string) => void;
+  info: (message: string) => void;
+  debug: (message: string) => void;
+  log: (message: string) => void;
+}
 
-const levels = {
-  error: 0,
-  warn: 1,
-  info: 2,
-  http: 3,
-  debug: 4,
+const createLogger = (): Logger => {
+  const isDev = import.meta.env.DEV;
+  const isLoggingDisabled = import.meta.env.VITE_DISABLE_LOGGING === 'true';
+
+  if (isLoggingDisabled) {
+    return {
+      error: () => {},
+      warn: () => {},
+      info: () => {},
+      debug: () => {},
+      log: () => {},
+    };
+  }
+
+  return {
+    error: (message: string) => {
+      console.error(`[ERROR] ${new Date().toISOString()}: ${message}`);
+    },
+    warn: (message: string) => {
+      console.warn(`[WARN] ${new Date().toISOString()}: ${message}`);
+    },
+    info: (message: string) => {
+      if (isDev) {
+        console.info(`[INFO] ${new Date().toISOString()}: ${message}`);
+      }
+    },
+    log(message: string): void {
+      console.log(`[LOG]: ${message}`);
+    },
+    debug: (message: string) => {
+      if (isDev) {
+        console.debug(`[DEBUG] ${new Date().toISOString()}: ${message}`);
+      }
+    },
+  };
 };
 
-const colors = {
-  error: 'red',
-  warn: 'yellow',
-  info: 'green',
-  http: 'magenta',
-  debug: 'white',
-};
-
-winston.addColors(colors);
-
-const format = winston.format.combine(
-  winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss:ms' }),
-  winston.format.colorize({ all: true }),
-  winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
-);
-
-const transports = [
-  new winston.transports.Console({
-    format: winston.format.combine(winston.format.colorize(), winston.format.simple()),
-  }),
-];
-
-const Logger = winston.createLogger({
-  level: import.meta.env.DEV ? 'debug' : 'warn',
-  levels,
-  format,
-  transports,
-  silent: import.meta.env.VITE_DISABLE_LOGGING === 'true',
-});
+const Logger = createLogger();
 
 export default Logger;

@@ -2,6 +2,7 @@ import { create } from 'zustand';
 
 import { ApiService } from '@/services/api';
 import { type RFMSegmentationData } from '@/types/dashboard';
+import Logger from '@/utils/logger';
 
 interface RFMSegmentationStore {
   data: RFMSegmentationData | null;
@@ -17,13 +18,13 @@ export const useRFMSegmentationStore = create<RFMSegmentationStore>(set => ({
   fetchRFMData: async () => {
     set({ loading: true, error: null });
     try {
-      console.log('Store: Starting RFM data fetch...');
       const data = await ApiService.getRFMSegmentation();
-      console.log('Store: Successfully fetched RFM data:', data);
       set({ data, loading: false });
     } catch (error) {
-      console.error('Store: Error fetching RFM data:', error);
-      // Fallback to mock data when API fails
+      Logger.error(
+        'Error fetching model performance: ' +
+          (error instanceof Error ? error.message : String(error))
+      );
       const mockData: RFMSegmentationData = {
         overview: {
           total_customers: 5630,
@@ -114,12 +115,7 @@ export const useRFMSegmentationStore = create<RFMSegmentationStore>(set => ({
           { 'RFM Segment': 'Loyal', avg_review_score: 2.97 },
         ],
       };
-      console.log('Store: Using mock data:', mockData);
-      set({
-        data: mockData,
-        loading: false,
-        error: 'Using mock data - API unavailable',
-      });
+      set({ data: mockData, loading: false, error: 'Using mock data - API unavailable' });
     }
   },
 }));
