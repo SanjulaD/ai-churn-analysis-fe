@@ -7,6 +7,7 @@ on:
     branches: [main]
 
 env:
+  REGISTRY: ${{ secrets.ACR_LOGIN_SERVER }}
   IMAGE_NAME: ai-churn-analysis-dashboard
 
 jobs:
