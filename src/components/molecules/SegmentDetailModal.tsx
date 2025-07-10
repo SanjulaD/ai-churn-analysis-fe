@@ -1,4 +1,3 @@
-import React from 'react';
 import { Clock, DollarSign, Star, Users } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';

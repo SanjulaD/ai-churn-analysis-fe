@@ -20,7 +20,6 @@ import type {
   FeatureImportanceData,
   ModelPerformanceData,
   RFMSegmentationData,
-  SegmentDeepDiveData,
   TopRiskCustomersResponse,
 } from '@/types/dashboard';
 
@@ -256,21 +255,21 @@ export class ApiService {
     }
   }
 
-  static async getSegmentDeepDive(): Promise<SegmentDeepDiveData> {
-    try {
-      console.log('Fetching segment deep dive data...');
-      const response = await fetch(API_ENDPOINTS.SEGMENT_DEEP_DIVE);
+  // static async getSegmentDeepDive(): Promise<SegmentDeepDiveData> {
+  //   try {
+  //     console.log('Fetching segment deep dive data...');
+  //     const response = await fetch(API_ENDPOINTS.SEGMENT_DEEP_DIVE);
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch segment deep dive data');
-      }
+  //     if (!response.ok) {
+  //       throw new Error('Failed to fetch segment deep dive data');
+  //     }
 
-      const data = await response.json();
-      console.log('Segment deep dive response:', data);
-      return data;
-    } catch (error) {
-      console.error('Error fetching segment deep dive data:', error);
-      throw error;
-    }
-  }
+  //     const data = await response.json();
+  //     console.log('Segment deep dive response:', data);
+  //     return data;
+  //   } catch (error) {
+  //     console.error('Error fetching segment deep dive data:', error);
+  //     throw error;
+  //   }
+  // }
 }

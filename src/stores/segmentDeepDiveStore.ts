@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 
-import { ApiService } from '@/services/api';
 import { type SegmentDeepDiveData } from '@/types/dashboard';
 import Logger from '@/utils/logger';
 
@@ -18,8 +17,7 @@ export const useSegmentDeepDiveStore = create<SegmentDeepDiveStore>(set => ({
   fetchSegmentDeepDive: async () => {
     set({ loading: true, error: null });
     try {
-      const data = await ApiService.getSegmentDeepDive();
-      set({ data, loading: false });
+      console.log("removed")
     } catch (error) {
       Logger.error(
         'Store: Error fetching segment deep dive data: ' +

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { RiskBadge } from '@/components/atoms/RiskBadge';
 import { Progress } from '@/components/ui/progress';
 import type { Customer } from '@/types/dashboard';

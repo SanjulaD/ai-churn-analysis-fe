@@ -1,4 +1,3 @@
-import React from 'react';
 import { LogOut, Moon, Sun } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';

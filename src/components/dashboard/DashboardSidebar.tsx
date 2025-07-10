@@ -1,4 +1,3 @@
-import React from 'react';
 import { BarChart3, Brain, Layers, Target, TrendingUp, Users } from 'lucide-react';
 
 import {
