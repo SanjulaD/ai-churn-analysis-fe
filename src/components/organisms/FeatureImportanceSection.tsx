@@ -49,15 +49,15 @@ export function FeatureImportanceSection() {
           onClick: handleDownload,
         }}
       >
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={400}>
           <RechartsBarChart
             data={data.features}
             layout="horizontal"
-            margin={{ top: 5, right: 30, left: 80, bottom: 5 }}
+            margin={{ top: 5, right: 30, left: 30, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" domain={[0, 0.3]} />
-            <YAxis dataKey="feature" type="category" width={80} />
+            <XAxis dataKey="feature" type="category" width={80} />
+            <YAxis type="number" dataKey="importance" domain={[0, 0.3]} />
             <Tooltip
               formatter={(value: number | string) => [Number(value).toFixed(3), 'SHAP Value']}
             />

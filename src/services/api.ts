@@ -207,15 +207,6 @@ export class ApiService {
           reviewsRes.json(),
         ]);
 
-      console.log('Raw API responses:', {
-        overview,
-        segments,
-        distribution,
-        paymentTypes,
-        products,
-        reviewScores,
-      });
-
       // Validate with Zod schemas
       const validatedOverview = RFMOverviewSchema.parse(overview);
       const validatedSegments = z.array(RFMSegmentDetailSchema).parse(segments);

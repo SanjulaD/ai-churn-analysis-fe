@@ -28,19 +28,6 @@ export const useFeatureImportanceStore = create<FeatureImportanceStore>(set => (
         'Error fetching feature importance: ' +
           (error instanceof Error ? error.message : String(error))
       );
-      // Fallback to mock data
-      const mockData: FeatureImportanceData = {
-        features: [
-          { feature: 'Monthly Charges', importance: 0.28 },
-          { feature: 'Total Charges', importance: 0.24 },
-          { feature: 'Contract Length', importance: 0.18 },
-          { feature: 'Tenure Months', importance: 0.15 },
-          { feature: 'Payment Method', importance: 0.12 },
-          { feature: 'Internet Service', importance: 0.08 },
-          { feature: 'Phone Service', importance: 0.06 },
-        ],
-      };
-      set({ data: mockData, loading: false });
     }
   },
   downloadCsv: async () => {
@@ -57,7 +44,6 @@ export const useFeatureImportanceStore = create<FeatureImportanceStore>(set => (
       Logger.error(
         'Error downloading CSV: ' + (error instanceof Error ? error.message : String(error))
       );
-      // Mock download for demo
       Logger.info('Downloading CSV...');
     } finally {
       set({ downloadingCsv: false });

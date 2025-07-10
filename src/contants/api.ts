@@ -1,7 +1,8 @@
 // Base URLs
 export const BASE_URL = import.meta.env.API_BASE_URL || 'http://127.0.0.1:8000';
 export const MODEL_BASE_URL = `${BASE_URL}/model`;
-export const FEATURE_IMPORTANCE_BASE_URL = `${BASE_URL}/feature-importance`;
+export const SHAP_BASE_URL = `${BASE_URL}/shap`;
+export const FEATURE_IMPORTANCE_BASE_URL = `${SHAP_BASE_URL}/feature-importance`;
 export const RFM_BASE_URL = `${BASE_URL}/rfm`;
 
 // API Endpoints
@@ -12,7 +13,7 @@ export const API_ENDPOINTS = {
   MODEL_UPDATE: `${MODEL_BASE_URL}/update-metrics`,
   FEATURE_IMPORTANCE: `${FEATURE_IMPORTANCE_BASE_URL}`,
   FEATURE_IMPORTANCE_DOWNLOAD: `${FEATURE_IMPORTANCE_BASE_URL}/csv`,
-  FEATURE_IMPORTANCE_SUMMARY: `${FEATURE_IMPORTANCE_BASE_URL}/summary`,
+  FEATURE_IMPORTANCE_SUMMARY: `${FEATURE_IMPORTANCE_BASE_URL}/summary?top_n=10`,
   RFM_OVERVIEW: `${RFM_BASE_URL}/overview`,
   RFM_SEGMENTS: `${RFM_BASE_URL}/segments`,
   RFM_SEGMENT_DETAIL: `${RFM_BASE_URL}/segment`,
