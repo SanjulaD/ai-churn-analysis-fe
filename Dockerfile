@@ -1,23 +1,26 @@
-# Stage 1: Builder
-FROM node:18 AS builder
+# Stage 1: Build the app
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
 COPY package*.json ./
 RUN npm ci --legacy-peer-deps
+
 COPY . .
 RUN npm run build
 
-# Stage 2: Runtime
-FROM node:18 AS runtime
+# Stage 2: Serve with Nginx
+FROM nginx:stable-alpine
 
-WORKDIR /app
+# Remove default static assets
+RUN rm -rf /usr/share/nginx/html/*
 
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package*.json ./
+# Copy build output to Nginx's html folder
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-RUN npm ci --omit=dev --legacy-peer-deps
+# Optional: copy custom nginx config if needed
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 3000
+EXPOSE 80
 
-CMD ["node", "dist/index.js"]
+CMD ["nginx", "-g", "daemon off;"]
