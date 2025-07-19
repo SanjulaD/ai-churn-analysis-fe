@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
 import { ChurnPredictionOverview } from '@/components/dashboard/ChurnPredictionOverview';
+import { CustomerPrediction } from '@/components/dashboard/CustomerPrediction';
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
 import { FeatureImportance } from '@/components/dashboard/FeatureImportance';
 import { ModelPerformanceMetrics } from '@/components/dashboard/ModelPerformanceMetrics';
 import { RFMSegmentation } from '@/components/dashboard/RFMSegmentation';
-import { SegmentDeepDive } from '@/components/dashboard/SegmentDeepDive';
 import { SidebarProvider } from '@/components/ui/sidebar';
 
 const Dashboard = () => {
@@ -36,8 +36,8 @@ const Dashboard = () => {
         return <FeatureImportance />;
       case 'rfm':
         return <RFMSegmentation />;
-      case 'deepdive':
-        return <SegmentDeepDive />;
+      case 'customerprediction':
+        return <CustomerPrediction />;
       default:
         return <ChurnPredictionOverview />;
     }
@@ -49,7 +49,7 @@ const Dashboard = () => {
       performance: '📈 Model Performance Metrics',
       features: '🔍 Feature Importance',
       rfm: '📊 RFM Segmentation Insights',
-      deepdive: '🧾 Segment-Level Deep Dives',
+      customerprediction: '🧾 Customer Churn Prediction',
     };
     return titles[activeSection as keyof typeof titles] || titles.overview;
   };

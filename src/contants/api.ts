@@ -7,6 +7,7 @@ export const RFM_BASE_URL = `${BASE_URL}/rfm`;
 
 // API Endpoints
 export const API_ENDPOINTS = {
+  CUSTOMER_PREDICT: `${MODEL_BASE_URL}/predict`,
   CHURN_OVERVIEW: `${MODEL_BASE_URL}/churn-distribution`,
   TOP_RISK_CUSTOMERS: `${MODEL_BASE_URL}/top-risk-customers`,
   MODEL_PERFORMANCE: `${MODEL_BASE_URL}/metrics`,

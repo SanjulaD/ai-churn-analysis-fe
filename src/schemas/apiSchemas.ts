@@ -111,6 +111,27 @@ export const RFMReviewScoreSchema = z.object({
   avg_review_score: z.number(),
 });
 
+export const churnPredictionSchema = z.object({
+  Tenure: z.number().min(0, 'Tenure must be positive'),
+  PreferredLoginDevice: z.string().min(1, 'Please select a login device'),
+  CityTier: z.number().int().min(1).max(3, 'City tier must be 1, 2, or 3'),
+  WarehouseToHome: z.number().min(0, 'Distance must be positive'),
+  PreferredPaymentMode: z.string().min(1, 'Please select a payment mode'),
+  Gender: z.string().min(1, 'Please select gender'),
+  HourSpendOnApp: z.number().min(0, 'Hours must be positive'),
+  NumberOfDeviceRegistered: z.number().int().min(0, 'Number of devices must be positive'),
+  PreferedOrderCat: z.string().min(1, 'Please select order category'),
+  SatisfactionScore: z.number().int().min(1).max(5, 'Score must be between 1-5'),
+  MaritalStatus: z.string().min(1, 'Please select marital status'),
+  NumberOfAddress: z.number().int().min(0, 'Number of addresses must be positive'),
+  Complain: z.number().int().min(0).max(1, 'Complain must be 0 or 1'),
+  OrderAmountHikeFromlastYear: z.number(),
+  CouponUsed: z.number().min(0, 'Coupon used must be positive'),
+  OrderCount: z.number().min(0, 'Order count must be positive'),
+  DaySinceLastOrder: z.number().min(0, 'Days must be positive'),
+  CashbackAmount: z.number().min(0, 'Cashback amount must be positive'),
+});
+
 export type ChurnDistributionResponse = z.infer<typeof ChurnDistributionSchema>;
 export type TopRiskCustomersResponse = z.infer<typeof TopRiskCustomersSchema>;
 export type ModelMetricsResponse = z.infer<typeof ModelMetricsSchema>;
@@ -121,3 +142,4 @@ export type RFMSegmentDistribution = z.infer<typeof RFMSegmentDistributionSchema
 export type RFMPaymentType = z.infer<typeof RFMPaymentTypeSchema>;
 export type RFMProduct = z.infer<typeof RFMProductSchema>;
 export type RFMReviewScore = z.infer<typeof RFMReviewScoreSchema>;
+export type ChurnPredictionData = z.infer<typeof churnPredictionSchema>;

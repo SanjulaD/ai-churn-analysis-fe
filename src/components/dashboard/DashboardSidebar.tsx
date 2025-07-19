@@ -33,9 +33,9 @@ const menuItems = [
     id: 'rfm',
   },
   {
-    title: 'Deep Dive',
+    title: 'Customer Prediction',
     icon: Layers,
-    id: 'deepdive',
+    id: 'customerprediction',
   },
 ];
 
