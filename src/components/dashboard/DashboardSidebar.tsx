@@ -37,6 +37,11 @@ const menuItems = [
     icon: Layers,
     id: 'customerprediction',
   },
+  {
+    title: 'Customer Analysis',
+    icon: Layers,
+    id: 'customeranalysis',
+  },
 ];
 
 interface DashboardSidebarProps {

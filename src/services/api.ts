@@ -255,21 +255,22 @@ export class ApiService {
     }
   }
 
-  // static async getSegmentDeepDive(): Promise<SegmentDeepDiveData> {
-  //   try {
-  //     console.log('Fetching segment deep dive data...');
-  //     const response = await fetch(API_ENDPOINTS.SEGMENT_DEEP_DIVE);
+  static async fetchChurnByCustomerId(customerId: number) {
+    const response = await fetch(`${API_ENDPOINTS.MODEL_PREDICT_BY_ID}/?customer_id=${customerId}`);
 
-  //     if (!response.ok) {
-  //       throw new Error('Failed to fetch segment deep dive data');
-  //     }
+    if (!response.ok) {
+      let errorMessage = `HTTP error! status: ${response.status}`;
 
-  //     const data = await response.json();
-  //     console.log('Segment deep dive response:', data);
-  //     return data;
-  //   } catch (error) {
-  //     console.error('Error fetching segment deep dive data:', error);
-  //     throw error;
-  //   }
-  // }
+      try {
+        const errorData = await response.json();
+        errorMessage = errorData.detail || errorData.message || errorMessage;
+      } catch (parseError) {
+        console.error('Error parsing error response:', parseError);
+      }
+
+      throw new Error(errorMessage);
+    }
+
+    return response.json();
+  }
 }

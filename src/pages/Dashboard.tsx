@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { ChurnPredictionOverview } from '@/components/dashboard/ChurnPredictionOverview';
+import { CustomerAnalysis } from '@/components/dashboard/CustomerAnalysis';
 import { CustomerPrediction } from '@/components/dashboard/CustomerPrediction';
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
@@ -38,6 +39,8 @@ const Dashboard = () => {
         return <RFMSegmentation />;
       case 'customerprediction':
         return <CustomerPrediction />;
+      case 'customeranalysis':
+        return <CustomerAnalysis />;
       default:
         return <ChurnPredictionOverview />;
     }
